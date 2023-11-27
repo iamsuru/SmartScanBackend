@@ -12,13 +12,15 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.use(cors({
-    origin : 'https://localhost:3000',
+    origin : 'https://smartscanmern.netlify.com/',
     credentials:true,
 }))
 
-app.get('/',(req,res)=>{
-    res.end('started')
-})
+console.log('Server Updated');
+
+// app.get('/',(req,res)=>{
+//     res.end('started')
+// })
 
 // app.get('/api/login',(req,res)=>{
 //     res.end('started login')
