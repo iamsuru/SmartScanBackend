@@ -10,13 +10,13 @@ const PORT = process.env.PORT || 2000
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-app.get('/',(req,res)=>{
-    res.end('started')
-})
+// app.get('/',(req,res)=>{
+//     res.end('started')
+// })
 
-app.get('/api/login',(req,res)=>{
-    res.end('started login')
-})
+// app.get('/api/login',(req,res)=>{
+//     res.end('started login')
+// })
 
 app.use('/api', AuthRouter)
 app.use('/api',AuthRouter)
