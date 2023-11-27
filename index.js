@@ -12,7 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.use(cors({
-    origin : 'https://smartscanmern.netlify.com/',
+    origin : 'https://smartscanmern.netlify.com',
     credentials:true,
 }))
 
