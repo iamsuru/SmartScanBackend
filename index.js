@@ -1,5 +1,6 @@
 const express = require('express')
 const AuthRouter = require('./routes/route')
+const cors = require('cors')
 // const RegisterRouter = require('./routes/Register')
 require('./src/db/config')
 
@@ -10,9 +11,14 @@ const PORT = process.env.PORT || 2000
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
-// app.get('/',(req,res)=>{
-//     res.end('started')
-// })
+app.use(cors({
+    origin : 'https://localhost:3000',
+    credentials:true,
+}))
+
+app.get('/',(req,res)=>{
+    res.end('started')
+})
 
 // app.get('/api/login',(req,res)=>{
 //     res.end('started login')

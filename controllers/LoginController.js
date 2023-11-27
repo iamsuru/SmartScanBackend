@@ -2,6 +2,7 @@ const Auth = require("../src/models/registerSchema")
 const bcrypt = require('bcrypt')
 
 const Login = async (req,res) => {
+    console.log('called');
     const { email_id, password } = req.body
     try {
         const auth = await Auth.findOne({ email_id })
