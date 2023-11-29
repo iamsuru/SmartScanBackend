@@ -29,17 +29,20 @@ const mobileUploadStorage = multer.diskStorage({
 
 const uploadFromMobile = multer({ storage: mobileUploadStorage }).single('document-to-upload')
 
-const handleFileUpload = (req,res) => {
-    uploadFromMobile(req,res,(err) => {
-        if(err instanceof multer.MulterError){
+const handleFileUpload = (req, res) => {
+    uploadFromMobile(req, res, (err) => {
+        if (err instanceof multer.MulterError) {
             res.status(500).json({ error: 'File upload error' })
-        }
-        else if(err){
+        } else if (err) {
             console.error('Error uploading file:', err)
             res.status(500).json({ error: 'Internal Server Error' })
-        }
-        else{
-            res.status(200).json({ message: 'File uploaded successfully' })
+        } else {
+            if (!req.file) {
+                res.status(400).json({ error: 'No file uploaded' })
+            } else {
+                // File was uploaded successfully
+                res.status(200).json({ message: 'File uploaded successfully' })
+            }
         }
     })
 }
