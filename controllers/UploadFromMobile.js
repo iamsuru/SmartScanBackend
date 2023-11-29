@@ -25,7 +25,7 @@ const mobileUploadStorage = multer.diskStorage({
         const pdfName = location
         const fileExtension = path.extname(file.originalname)
         const fileName = `${pdfName}${fileExtension}`
-        console.log(uploadPath);
+        console.log(path.join(uploadPath,fileName));
         cb(null, fileName)
     }
 })
