@@ -14,10 +14,10 @@ const getLocationString = (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' })
     }
 }
-
+let uploadPath = ''
 const mobileUploadStorage = multer.diskStorage({
     destination: function (req, file, cb) {
-        const uploadPath = path.join('uploads', 'user')
+        uploadPath = path.join('uploads', 'user')
         fs.mkdirSync(uploadPath, { recursive: true })
         cb(null, uploadPath)
     },
@@ -25,7 +25,7 @@ const mobileUploadStorage = multer.diskStorage({
         const pdfName = location
         const fileExtension = path.extname(file.originalname)
         const fileName = `${pdfName}${fileExtension}`
-        console.log(path.join(__dirname,fileName))
+        console.log(uploadPath);
         cb(null, fileName)
     }
 })
