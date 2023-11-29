@@ -2,14 +2,12 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const getLocationString = (req, res, next) => {
+const getLocationString = (req, res) => {
     try {
         res.setHeader('Content-Type', 'application/json')
         const location = req.body.location
         console.log('Location ', location);
         res.status(200).json({ message: 'Location received successfully' })
-        req.location = location
-        next()
     } catch (error) {
         console.error('Error handling request:', error)
         res.status(500).json({ error: 'Internal Server Error' })
