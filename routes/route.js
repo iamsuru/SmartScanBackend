@@ -8,5 +8,6 @@ router.post('/login', LoginController.Login)
 router.post('/register', RegisterController.Register)
 router.post('/sendLocationString', UploadFromMobile.getLocationString)
 router.post('/uploadFromMobile', UploadFromMobile.handleFileUpload)
+router.post('/getFilePath', UploadFromMobile.getFilePath)
 
 module.exports = router

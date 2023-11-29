@@ -25,7 +25,7 @@ const mobileUploadStorage = multer.diskStorage({
         const pdfName = location
         const fileExtension = path.extname(file.originalname)
         const fileName = `${pdfName}${fileExtension}`
-        console.log(path.join(uploadPath,fileName));
+        uploadPath = (path.join(uploadPath, fileName));
         cb(null, fileName)
     }
 })
@@ -49,4 +49,13 @@ const handleFileUpload = (req, res) => {
     })
 }
 
-module.exports = { getLocationString, handleFileUpload }
+const getFilePath = (req, res) => {
+    if (uploadPath) {
+        res.status(200).json({ uploadPath })
+    }
+    else{
+        res.status(404)
+    }
+}
+
+module.exports = { getLocationString, handleFileUpload, getFilePath }
