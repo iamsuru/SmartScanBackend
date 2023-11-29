@@ -5,7 +5,7 @@ const fs = require('fs');
 const getLocationString = (req, res) => {
     try {
         res.setHeader('Content-Type', 'application/json')
-        const location = req.body.location
+        var location = req.body.location
         console.log('Location ', location);
         res.status(200).json({ message: 'Location received successfully' })
     } catch (error) {
@@ -21,7 +21,7 @@ const mobileUploadStorage = multer.diskStorage({
         cb(null, uploadPath)
     },
     filename: function (req, file, cb) {
-        const pdfName = '845665'
+        const pdfName = location
         const fileExtension = path.extname(file.originalname)
         cb(null, `${pdfName}${fileExtension}`)
     }
@@ -40,7 +40,6 @@ const handleFileUpload = (req, res) => {
             if (!req.file) {
                 res.status(400).json({ error: 'No file uploaded' })
             } else {
-                // File was uploaded successfully
                 res.status(200).json({ message: 'File uploaded successfully' })
             }
         }
