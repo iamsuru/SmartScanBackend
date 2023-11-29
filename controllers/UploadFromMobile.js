@@ -50,6 +50,7 @@ const handleFileUpload = (req, res) => {
 }
 
 const getFilePath = (req, res) => {
+    console.log(uploadPath)
     if (uploadPath) {
         res.status(200).json({ uploadPath })
     }
