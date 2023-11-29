@@ -1,6 +1,7 @@
 const express = require('express')
 const AuthRouter = require('./routes/route')
 const cors = require('cors')
+const path = require('path')
 // const RegisterRouter = require('./routes/Register')
 require('./src/db/config')
 
@@ -8,12 +9,13 @@ const app = express()
 const PORT = process.env.PORT || 2000
 
 //middlewares
+app.use(express.static(path.join(__dirname, 'uploads')))
 app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
 
 app.use(cors({
-    origin : 'https://smartscanmern.netlify.app',
-    credentials:true,
+    origin: 'https://smartscanmern.netlify.app',
+    credentials: true,
 }))
 
 console.log('Server Updated');
@@ -27,7 +29,9 @@ console.log('Server Updated');
 // })
 
 app.use('/api', AuthRouter)
-app.use('/api',AuthRouter)
+app.use('/api', AuthRouter)
+app.use('/api', AuthRouter)
+app.use('/api', AuthRouter)
 
 app.listen(PORT, () => {
     console.log(`Connection established on ${PORT}`)
