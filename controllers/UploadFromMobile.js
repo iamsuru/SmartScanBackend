@@ -57,6 +57,7 @@ const getFilePath = (req, res) => {
     else{
         res.status(404)
     }
+    uploadPath = ''
 }
 
 module.exports = { getLocationString, handleFileUpload, getFilePath }
